@@ -1,0 +1,397 @@
+$black: #000000;
+$white: #ffffff;
+$blue: #22a4fa;
+$grey: #95989a;
+$lightgrey: #E6E6E6;
+$green: #25b52b;
+$red: #e00034;
+
+*{
+  box-sizing: border-box;
+}
+
+body, html {
+  font-family: 'Open Sans', sans-serif;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 300;
+}
+
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button{
+    -webkit-appearance: none;
+    margin: 0;
+}
+input[type=number]{
+    -moz-appearance: textfield;
+}
+input[type=submit]{
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  outline: none;
+  border: none;
+}
+
+.clearfix:before, .clearfix:after {
+	content: " ";
+	display: table;
+}
+
+.clearfix:after {
+	clear: both;
+}
+
+.wrapper {
+	width: 1440px;
+	max-width: 95%;
+	margin: 0 auto;
+}
+
+#top_header {
+  padding: 1.2em 0;
+  .logo {
+    color: $black;
+    float: left;
+    font-weight: 700;
+    font-size: 1.15em;
+    span {
+      font-weight: 300;
+    }
+  }
+  .register{
+    font-size: 0.8em;
+    line-height: 2.5em;
+    padding: 1.2em 0;
+    text-decoration: none;
+    color: $grey;
+    font-weight: bold;
+    float: right;
+  }
+}
+
+#banner {
+  background: url("../images/stadium.jpg") no-repeat center bottom;
+  background-size: cover;
+  padding: 5em 0;
+  .wrapper{
+    width: 600px;
+    max-width: 95%;
+  }
+  .next {
+    font-weight: 700;
+    font-size: 0.9em;
+    color: $white;
+  }
+  .nextgame {
+    display: flex;
+    justify-content: space-between;
+    .flag {
+      height: 40px;
+      margin: 5px 0px;
+      border-radius: 0.2em;
+    }
+    .teamA, .teamB {
+      margin: 0 0 0 0;
+      color: $white;
+      font-size: 40px;
+      line-height: 50px;
+    }
+    .point {
+      font-size: 40px;
+      margin: 0 0 0 0;
+      line-height: 50px;
+      color: $white;
+    }
+  }
+}
+
+#content {
+  margin: 50px auto 100px auto;
+  .wrapper {
+    width: 500px;
+    max-width: 95%;
+    box-shadow: 0px 0px 15px -2px rgba(0,0,0,0.23);
+  }
+  .menu {
+    display: flex;
+    justify-content: center;
+    border-bottom: 2px solid $lightgrey;
+    .item {
+      cursor: pointer;
+      color: $grey;
+      margin: 15px 10px;
+      font-size: 16px;
+      line-height: 30px;
+      &.active {
+        border-bottom: 2px solid $blue;
+      }
+    }
+  }
+  .game {
+    position: relative;
+    border-bottom: 2px solid $lightgrey;
+    padding: 10px 40px;
+    .marked{
+      position:absolute;
+      top: -2px;
+      right: 5px;
+      height: 20px;
+      &.hide{
+        display: none;
+      }
+    }
+    .line {
+      .date, .time {
+        font-size: 12px;
+        font-weight: 700;
+        color: $grey;
+      }
+      .date {
+        float: left;
+      }
+      .time {
+        float: right;
+      }
+    }
+    .match{
+      text-align: center;
+      .teamA{
+        float: left;
+        width: 46%;
+        text-align: right;
+      }
+      .point{
+        display: inline-block;
+        width: 8%;
+        line-height: 30px;
+      }
+      .teamB{
+        float: right;
+        width: 46%;
+        text-align: left;
+      }
+      .teams{
+        display: inline-block;
+        font-size: 16px;
+        line-height: 30px;
+      }
+      .flag{
+        height: 14px;
+        border-radius: 0.1em;
+        line-height: 30px;
+        &:first-child{
+          margin-right: 10px;
+        }
+        &:last-child{
+          margin-left: 10px;
+        }
+      }
+    }
+    .tipps{
+      text-align: center;
+      input{
+        width: 50px;
+        height: 25px;
+        margin: 5px;
+        line-height: 25px;
+        font-size: 12px;
+        color: $grey;
+        background: $white;
+        border: 1px solid $lightgrey;
+        border-radius: 0.2em;
+        text-align: center;
+      }
+    }
+    .button{
+      cursor: pointer;
+      position: absolute;
+      bottom: 15px;
+      right: 27.5px;
+      width: 70px;
+      height: 25px;
+      line-height: 25px;
+      font-size: 12px;
+      background: $blue;
+      border-radius: 12.5px;
+      color: $white;
+      text-align: center;
+    }
+    &.tipped{
+      marked{
+        display: block;
+      }
+    }
+  }
+  main {
+    &#results{
+      display: none;
+    }
+    &#table{
+      display: none;
+    }
+  }
+}
+
+#table {
+  padding: 0px 0px 60px 0px;
+  h1 {
+    font-weight: 300;
+    font-size: 16px;
+    text-align: left;
+    padding: 0px 40px;
+  }
+  table {
+    margin: 30px 0px;
+    border-collapse: collapse;
+    tr {
+      th {
+        background: $white;
+        font-size: 9px;
+        color: $grey;
+        font-weight: normal;
+        padding: 5px 5px;
+      }
+    }
+    tr {
+      &:nth-child(even) {
+        background: $lightgrey;
+      }
+      &:nth-child(2){
+        background: $green;
+        box-shadow: 0px 5px 10px 0px rgba(0,0,0,0.2);
+        td{
+          color: $white;
+          opacity: 0.75;
+        }
+        td:last-child, td:first-child{
+          color: $white;
+          opacity: 1;
+          font-weight: 700;
+        }
+      }
+      td {
+        text-align: center;
+        font-size: 12px;
+        line-height: 30px;
+        color: $grey;
+        &:first-child {
+          padding: 0px 0px 0px 40px;
+          color: $black;
+          font-size: 14px;
+          width: 100%;
+          text-align: left;
+        }
+        &:last-child {
+          color: $black;
+          font-size: 14px;
+        }
+      }
+    }
+  }
+}
+
+
+#banner.login {
+  height: calc(100vh - 6.3em);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  .wrapper {
+    width: 600px;
+    max-width: 90%;
+    text-align: center;
+  }
+  h1 {
+    font-weight: 700;
+    color: $white;
+    span {
+      font-weight: 300;
+    }
+  }
+  .line {
+    width: 200px;
+    margin: 20px auto;
+    background: $white;
+    border-radius: 5px;
+    .icon {
+      float: left;
+      color: $black;
+      line-height: 30px;
+      text-align: center;
+      width: 20px;
+      padding: 0px 0px 0px 10px;
+    }
+    input {
+      border: none;
+      border-left: 1px solid $black;
+      line-height: 30px;
+      font-size: 12px;
+      width: 160px;
+      color: $grey;
+      padding: 0px 10px;
+    }
+  }
+  .submit {
+    cursor: pointer;
+    background: $white;
+    display: inline-block;
+    padding: 0px 15px;
+    border-radius: 15px;
+    height: 30px;
+    line-height: 30px;
+    color: $black;
+    font-size: 14px;
+    margin: 0;
+  }
+}
+
+.error{
+  width: 200px;
+  margin: 0 auto;
+  background: $red;
+  padding: 10px 20px;
+  border-radius: 0.2em;
+  color: $white;
+}
+
+.notice{
+  width: 200px;
+  margin: 0 auto;
+  background: $green;
+  padding: 10px 20px;
+  border-radius: 0.2em;
+  color: $white;
+}
+
+@media screen and (max-width: 550px){
+  #banner {
+    .next {
+      text-align: center;
+    }
+    .nextgame {
+      display: block;
+      padding: 5px 20px;
+      text-align: center;
+      justify-content: space-between;
+      .flag {
+        height: 40px;
+        margin: 5px 0px;
+        border-radius: 0.2em;
+      }
+      .teamA, .teamB {
+        margin: 0 0 0 0;
+        color: $white;
+        font-size: 40px;
+        line-height: 50px;
+      }
+      .point {
+        font-size: 40px;
+        margin: 0 0 0 0;
+        line-height: 50px;
+        color: $white;
+      }
+    }
+  }
+}
